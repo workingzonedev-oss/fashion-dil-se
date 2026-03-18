@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fashion Dil Se Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-logo">F</div>
+        <p class="eyebrow">Fashion Dil Se</p>
+        <h1>Admin Panel</h1>
+      </div>
+
+      <nav class="side-nav">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </a>
+        <a href="#campaigns" class="nav-item" data-section="campaigns">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Campaigns
+        </a>
+        <a href="#discover-pages" class="nav-item" data-section="discover-pages">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          Discover Pages
+        </a>
+        <a href="#products" class="nav-item" data-section="products">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Products
+        </a>
+        <a href="#offers" class="nav-item" data-section="offers">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          Offers
+        </a>
+        <a href="#notifications" class="nav-item" data-section="notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          Notifications
+        </a>
+        <a href="#orders" class="nav-item" data-section="orders">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Orders
+        </a>
+        <a href="#sync" class="nav-item" data-section="sync">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+          App Link
+        </a>
+      </nav>
+
+      <div class="side-card">
+        <strong>Quick Stats</strong>
+        <div class="side-stats">
+          <span><strong id="side-products">0</strong> Products</span>
+          <span><strong id="side-orders">0</strong> Orders</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <!-- DASHBOARD -->
+      <header class="topbar" id="dashboard">
+        <div>
+          <p class="eyebrow">Connected Workspace</p>
+          <h2>Fashion Dil Se Control Room</h2>
+          <p class="subcopy">Manage campaigns, products, offers, and orders. All changes sync instantly to the app.</p>
+        </div>
+        <div class="topbar-actions">
+          <span class="status-pill" id="link-status">
+            <span class="status-dot"></span>
+            API Connected
+          </span>
+          <button class="ghost-btn" id="refresh-store" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            Refresh
+          </button>
+        </div>
+      </header>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </div>
+          <div>
+            <p>Products</p>
+            <strong id="product-count">0</strong>
+            <span>Published in catalog</span>
+          </div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div>
+            <p>Campaigns</p>
+            <strong id="campaign-count">0</strong>
+            <span>Live in home slider</span>
+          </div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <p>Offers</p>
+            <strong id="offer-count">0</strong>
+            <span>Active coupons</span>
+          </div>
+        </article>
+        <article class="stat-card accent">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <p>Orders</p>
+            <strong id="order-count">0</strong>
+            <span>Total received</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="hero-card">
+        <div>
+          <p class="eyebrow">Sync Status</p>
+          <h3>Real-time app link active</h3>
+          <p>All changes save instantly and the Android app auto-syncs every 5 seconds.</p>
+        </div>
+        <div class="hero-note">
+          <span>Last Updated</span>
+          <strong id="updated-at">Not synced yet</strong>
+        </div>
+      </section>
+
+      <!-- CAMPAIGNS -->
+      <section class="panel-grid two-col" id="campaigns">
+        <article class="panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Home Slider</p>
+              <h3>Create Campaign</h3>
+            </div>
+            <span class="badge">App linked</span>
+          </div>
+          <form id="campaign-form" class="stack">
+            <input type="hidden" name="editId" value="" />
+            <label>
+              Title
+              <input type="text" name="title" placeholder="Festive Collection" required />
+            </label>
+            <label>
+              Eyebrow
+              <input type="text" name="eyebrow" placeholder="Occasion Focus" required />
+            </label>
+            <label>
+              Subtitle
+              <textarea name="subtitle" rows="3" placeholder="Statement ethnic looks for events and festive evenings." required></textarea>
+            </label>
+            <label>
+              Campaign Image
+              <div class="image-upload-zone" data-target="campaign-image-preview">
+                <input type="file" name="imageFile" accept="image/*" class="file-input" />
+                <div class="upload-placeholder">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span>Click or drag image here</span>
+                  <small>PNG, JPG, WebP up to 5MB</small>
+                </div>
+                <div class="upload-preview" id="campaign-image-preview"></div>
+              </div>
+              <input type="hidden" name="imageUrl" value="" />
+            </label>
+            <div class="inline-fields">
+              <label>
+                CTA
+                <input type="text" name="cta" placeholder="Shop Festive" required />
+              </label>
+              <label>
+                Status
+                <select name="status">
+                  <option value="Published">Published</option>
+                  <option value="Draft">Draft</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Save Campaign
+              </button>
+              <button class="ghost-btn cancel-edit-btn" type="button" style="display:none">Cancel Edit</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Campaign Queue</p>
+              <h3>All Campaigns</h3>
+            </div>
+            <button class="ghost-btn danger-text" id="clear-campaigns" type="button">Clear All</button>
+          </div>
+          <div id="campaign-list" class="list-shell"></div>
+        </article>
+      </section>
+
+      <!-- DISCOVER PAGES -->
+      <section class="panel-grid two-col" id="discover-pages">
+        <article class="panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Discover Pages</p>
+              <h3>Create Discover Entry</h3>
+            </div>
+            <span class="badge">Separate app pages</span>
+          </div>
+          <form id="discover-form" class="stack">
+            <input type="hidden" name="editId" value="" />
+            <label>
+              Section
+              <select name="sectionKey">
+                <option value="trending_collections">Trending Collections</option>
+                <option value="budget_picks">Budget Picks</option>
+                <option value="shop_by_occasion">Shop by Mood / Occasion</option>
+              </select>
+            </label>
+            <label>
+              Title
+              <input type="text" name="title" placeholder="Festive Glam Edit" required />
+            </label>
+            <label>
+              Subtitle
+              <textarea name="subtitle" rows="3" placeholder="Short support copy for this discover page entry." required></textarea>
+            </label>
+            <label>
+              Cover Image
+              <div class="image-upload-zone" data-target="discover-image-preview">
+                <input type="file" name="imageFile" accept="image/*" class="file-input" />
+                <div class="upload-placeholder">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span>Click or drag image here</span>
+                  <small>PNG, JPG, WebP up to 5MB</small>
+                </div>
+                <div class="upload-preview" id="discover-image-preview"></div>
+              </div>
+              <input type="hidden" name="imageUrl" value="" />
+            </label>
+            <label>
+              Status
+              <select name="status">
+                <option value="Published">Published</option>
+                <option value="Draft">Draft</option>
+              </select>
+            </label>
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">Save Discover Entry</button>
+              <button class="ghost-btn cancel-edit-btn" type="button" style="display:none">Cancel Edit</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Discover Feed</p>
+              <h3>All Entries</h3>
+            </div>
+            <button class="ghost-btn danger-text" id="clear-discover-items" type="button">Clear All</button>
+          </div>
+          <div id="discover-list" class="list-shell"></div>
+        </article>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="panel-card full-width" id="products">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Catalog</p>
+            <h3>Product Catalog Manager</h3>
+          </div>
+          <div class="panel-head-actions">
+            <span class="badge">Feeds entire app</span>
+            <button class="ghost-btn danger-text" id="clear-products" type="button">Clear All</button>
+          </div>
+        </div>
+
+        <form id="product-form" class="stack">
+          <input type="hidden" name="editId" value="" />
+
+          <div class="form-section-label">Basic Information</div>
+          <div class="form-grid three-col">
+            <label>
+              Product Title
+              <input type="text" name="title" placeholder="Everyday Straight Kurti" required />
+            </label>
+            <label>
+              Subtitle
+              <input type="text" name="subtitle" placeholder="Women" required />
+            </label>
+            <label>
+              Collection
+              <select name="collection" required>
+                <option value="New Arrivals">New Arrivals</option>
+                <option value="Bestsellers">Bestsellers</option>
+                <option value="Recommended for You">Recommended for You</option>
+                <option value="Trending">Trending</option>
+                <option value="Budget Picks">Budget Picks</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="form-grid three-col">
+            <label>
+              Category Path
+              <select name="categoryPath" required>
+                <optgroup label="Women">
+                  <option value="Women > Sarees">Women > Sarees</option>
+                  <option value="Women > Kurtis">Women > Kurtis</option>
+                  <option value="Women > Salwar Sets">Women > Salwar Sets</option>
+                  <option value="Women > Dresses">Women > Dresses</option>
+                  <option value="Women > Tops">Women > Tops</option>
+                  <option value="Women > Jeans">Women > Jeans</option>
+                  <option value="Women > Skirts">Women > Skirts</option>
+                  <option value="Women > Nightwear">Women > Nightwear</option>
+                  <option value="Women > Hijab / Modest Wear">Women > Hijab / Modest Wear</option>
+                </optgroup>
+                <optgroup label="Men">
+                  <option value="Men > T-Shirts">Men > T-Shirts</option>
+                  <option value="Men > Shirts">Men > Shirts</option>
+                  <option value="Men > Jeans">Men > Jeans</option>
+                  <option value="Men > Trousers">Men > Trousers</option>
+                  <option value="Men > Ethnic Wear">Men > Ethnic Wear</option>
+                  <option value="Men > Jackets">Men > Jackets</option>
+                  <option value="Men > Footwear">Men > Footwear</option>
+                </optgroup>
+                <optgroup label="Kids">
+                  <option value="Kids > Boys Wear">Kids > Boys Wear</option>
+                  <option value="Kids > Girls Wear">Kids > Girls Wear</option>
+                  <option value="Kids > Baby Clothing">Kids > Baby Clothing</option>
+                  <option value="Kids > Footwear">Kids > Footwear</option>
+                  <option value="Kids > Accessories">Kids > Accessories</option>
+                </optgroup>
+                <optgroup label="Beauty">
+                  <option value="Beauty > Makeup">Beauty > Makeup</option>
+                  <option value="Beauty > Skincare">Beauty > Skincare</option>
+                  <option value="Beauty > Haircare">Beauty > Haircare</option>
+                  <option value="Beauty > Perfume">Beauty > Perfume</option>
+                  <option value="Beauty > Personal Care">Beauty > Personal Care</option>
+                </optgroup>
+                <optgroup label="Jewellery">
+                  <option value="Jewellery > Earrings">Jewellery > Earrings</option>
+                  <option value="Jewellery > Necklaces">Jewellery > Necklaces</option>
+                  <option value="Jewellery > Bangles">Jewellery > Bangles</option>
+                  <option value="Jewellery > Rings">Jewellery > Rings</option>
+                  <option value="Jewellery > Bridal Sets">Jewellery > Bridal Sets</option>
+                </optgroup>
+                <optgroup label="Bags & Footwear">
+                  <option value="Bags & Footwear > Handbags">Bags & Footwear > Handbags</option>
+                  <option value="Bags & Footwear > Sling Bags">Bags & Footwear > Sling Bags</option>
+                  <option value="Bags & Footwear > Heels">Bags & Footwear > Heels</option>
+                  <option value="Bags & Footwear > Flats">Bags & Footwear > Flats</option>
+                  <option value="Bags & Footwear > Sandals">Bags & Footwear > Sandals</option>
+                  <option value="Bags & Footwear > Sneakers">Bags & Footwear > Sneakers</option>
+                </optgroup>
+                <optgroup label="Home Decor">
+                  <option value="Home Decor > Bedsheets">Home Decor > Bedsheets</option>
+                  <option value="Home Decor > Curtains">Home Decor > Curtains</option>
+                  <option value="Home Decor > Cushion Covers">Home Decor > Cushion Covers</option>
+                  <option value="Home Decor > Wall Decor">Home Decor > Wall Decor</option>
+                  <option value="Home Decor > Storage">Home Decor > Storage</option>
+                </optgroup>
+              </select>
+            </label>
+            <label>
+              Delivery Label
+              <select name="deliveryLabel" required>
+                <option value="Fast Delivery">Fast Delivery</option>
+                <option value="Standard Delivery">Standard Delivery</option>
+                <option value="Express Delivery">Express Delivery</option>
+                <option value="Free Delivery">Free Delivery</option>
+              </select>
+            </label>
+            <label>
+              Status
+              <select name="status">
+                <option value="Published">Published</option>
+                <option value="Draft">Draft</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="form-section-label">Pricing</div>
+          <div class="form-grid three-col">
+            <label>
+              Selling Price (INR)
+              <input type="number" name="price" min="0" placeholder="699" required />
+            </label>
+            <label>
+              Original Price / MRP (INR)
+              <input type="number" name="originalPrice" min="0" placeholder="1199" required />
+            </label>
+            <label>
+              Rating (0-5)
+              <input type="number" name="rating" min="0" max="5" step="0.1" placeholder="4.4" required />
+            </label>
+          </div>
+
+          <div class="form-section-label">Product Images</div>
+          <div class="product-images-area">
+            <div class="image-upload-zone multi" data-target="product-images-preview">
+              <input type="file" name="imageFiles" accept="image/*" multiple class="file-input" />
+              <div class="upload-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Add product images (multiple)</span>
+                <small>Upload up to 6 images</small>
+              </div>
+            </div>
+            <div class="images-preview-grid" id="product-images-preview"></div>
+            <input type="hidden" name="images" value="[]" />
+          </div>
+
+          <div class="form-section-label">Variants</div>
+          <div class="form-grid two-col">
+            <label>
+              Colors (comma-separated)
+              <input type="text" name="colors" placeholder="Green, Black, Beige" required />
+            </label>
+            <label>
+              Sizes (comma-separated)
+              <input type="text" name="sizes" placeholder="XS, S, M, L, XL" required />
+            </label>
+          </div>
+
+          <div class="form-section-label">Product Details</div>
+          <div class="form-grid three-col">
+            <label>
+              Country of Origin
+              <input type="text" name="origin" placeholder="India" required />
+            </label>
+            <label>
+              Fabric / Material
+              <input type="text" name="fabric" placeholder="Soft rayon blend" required />
+            </label>
+            <label>
+              Fit
+              <input type="text" name="fit" placeholder="Straight fit" required />
+            </label>
+            <label>
+              Style
+              <input type="text" name="style" placeholder="Minimal everyday ethnic" required />
+            </label>
+            <label>
+              Pattern
+              <input type="text" name="pattern" placeholder="Solid with subtle detailing" required />
+            </label>
+            <label>
+              Care Instructions
+              <input type="text" name="care" placeholder="Gentle machine wash" required />
+            </label>
+          </div>
+          <label>
+            Description
+            <textarea name="description" rows="4" placeholder="Write the product description used in the product details screen." required></textarea>
+          </label>
+
+          <div class="form-section-label">Meesho Reselling</div>
+          <div class="reselling-info-box">
+            <strong>Reselling Mode</strong>
+            <p>Enable this to let resellers share products via WhatsApp/social media with custom margins. Set your supplier cost price and the app selling price. Resellers earn the difference.</p>
+          </div>
+          <div class="form-grid three-col">
+            <label>
+              Enable Reselling
+              <select name="enableReselling">
+                <option value="false">No</option>
+                <option value="true">Yes - Enable Share & Earn</option>
+              </select>
+            </label>
+            <label>
+              Reseller Cost Price (INR)
+              <input type="number" name="resellerPrice" min="0" placeholder="450" />
+            </label>
+            <label>
+              Meesho Supplier Link
+              <input type="text" name="meeshoSupplierLink" placeholder="https://supplier.meesho.com/..." />
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="primary-btn" type="submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              Save Product
+            </button>
+            <button class="ghost-btn cancel-edit-btn" type="button" style="display:none">Cancel Edit</button>
+          </div>
+        </form>
+
+        <div class="list-search-bar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="product-search" placeholder="Search products by name, category, collection..." />
+        </div>
+        <div id="product-list" class="list-shell list-margin"></div>
+      </section>
+
+      <!-- OFFERS -->
+      <section class="panel-grid two-col" id="offers">
+        <article class="panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Offers</p>
+              <h3>Create Offer</h3>
+            </div>
+          </div>
+          <form id="offer-form" class="stack">
+            <input type="hidden" name="editId" value="" />
+            <label>
+              Code
+              <input type="text" name="code" placeholder="FDS100" required />
+            </label>
+            <label>
+              Description
+              <textarea name="description" rows="3" placeholder="Flat discount on your first order." required></textarea>
+            </label>
+            <div class="inline-fields">
+              <label>
+                Minimum Order (INR)
+                <input type="number" name="minimumOrder" min="0" placeholder="999" required />
+              </label>
+              <label>
+                Status
+                <select name="status">
+                  <option value="Published">Published</option>
+                  <option value="Draft">Draft</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">Save Offer</button>
+              <button class="ghost-btn cancel-edit-btn" type="button" style="display:none">Cancel Edit</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Offers Feed</p>
+              <h3>All Offers</h3>
+            </div>
+            <button class="ghost-btn danger-text" id="clear-offers" type="button">Clear All</button>
+          </div>
+          <div id="offer-list" class="list-shell"></div>
+        </article>
+      </section>
+
+      <!-- NOTIFICATIONS -->
+      <section class="panel-grid two-col" id="notifications">
+        <article class="panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Notifications</p>
+              <h3>Create Notification</h3>
+            </div>
+          </div>
+          <form id="notification-form" class="stack">
+            <input type="hidden" name="editId" value="" />
+            <label>
+              Title
+              <input type="text" name="title" placeholder="Order Out for Delivery" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="3" placeholder="Your order is arriving today." required></textarea>
+            </label>
+            <div class="inline-fields">
+              <label>
+                Type
+                <select name="type" required>
+                  <option value="Delivery Updates">Delivery Updates</option>
+                  <option value="Promotions">Promotions</option>
+                  <option value="Order Updates">Order Updates</option>
+                  <option value="New Arrivals">New Arrivals</option>
+                  <option value="Flash Sale">Flash Sale</option>
+                  <option value="General">General</option>
+                </select>
+              </label>
+              <label>
+                Status
+                <select name="status">
+                  <option value="Published">Published</option>
+                  <option value="Draft">Draft</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">Save Notification</button>
+              <button class="ghost-btn cancel-edit-btn" type="button" style="display:none">Cancel Edit</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="panel-card">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Notification Feed</p>
+              <h3>All Notifications</h3>
+            </div>
+            <button class="ghost-btn danger-text" id="clear-notifications" type="button">Clear All</button>
+          </div>
+          <div id="notification-list" class="list-shell"></div>
+        </article>
+      </section>
+
+      <!-- ORDERS -->
+      <section class="panel-card full-width" id="orders">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Orders</p>
+            <h3>Orders from App</h3>
+          </div>
+          <div class="panel-head-actions">
+            <div class="order-filter-tabs">
+              <button class="tab-btn active" data-filter="all">All</button>
+              <button class="tab-btn" data-filter="Processing">Processing</button>
+              <button class="tab-btn" data-filter="Shipped">Shipped</button>
+              <button class="tab-btn" data-filter="Delivered">Delivered</button>
+              <button class="tab-btn" data-filter="Cancelled">Cancelled</button>
+            </div>
+            <button class="ghost-btn danger-text" id="clear-orders" type="button">Clear All</button>
+          </div>
+        </div>
+        <div id="order-list" class="list-shell"></div>
+      </section>
+
+      <!-- APP LINK -->
+      <section class="panel-card full-width" id="sync">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">App Link</p>
+            <h3>API Endpoints & Data Preview</h3>
+          </div>
+        </div>
+        <div class="sync-grid">
+          <div class="sync-card">
+            <div class="sync-label">Panel URL</div>
+            <code>http://127.0.0.1:4173</code>
+          </div>
+          <div class="sync-card">
+            <div class="sync-label">Store API</div>
+            <code>http://127.0.0.1:4173/api/store</code>
+          </div>
+          <div class="sync-card">
+            <div class="sync-label">Emulator API</div>
+            <code>http://10.0.2.2:4173/api/store</code>
+          </div>
+          <div class="sync-card">
+            <div class="sync-label">Upload API</div>
+            <code>http://127.0.0.1:4173/api/upload</code>
+          </div>
+        </div>
+        <pre id="store-preview" class="preview-box"></pre>
+      </section>
+    </main>
+  </div>
+
+  <!-- CONFIRM DIALOG -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal-box">
+      <h3 id="confirm-title">Confirm</h3>
+      <p id="confirm-message">Are you sure?</p>
+      <div class="modal-actions">
+        <button class="ghost-btn" id="confirm-cancel">Cancel</button>
+        <button class="danger-btn" id="confirm-ok">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container"></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

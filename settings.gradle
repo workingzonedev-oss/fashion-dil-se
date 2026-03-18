@@ -1,0 +1,2 @@
+rootProject.name = "Fashion Dil Se"
+include ':app'

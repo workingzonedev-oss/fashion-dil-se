@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.fashiondilse.app-mergeDebugResources-68:/values-v16/values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Sera\\.gradle\\caches\\8.14.3\\transforms\\eda1f8b46fd464655c58961f2ed9f1e8\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    }
+                }
+            ]
+        }
+    ]
+}
